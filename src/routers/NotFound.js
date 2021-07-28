@@ -1,13 +1,13 @@
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom'
 
 export default function NotFound() {
-    const history = useHistory();
+    const history = useHistory()
 
     const onBackHome = () => {
-        history.replace('/');
+        history.replace('/')
     }
     const onBackPrev = () => {
-        history.go(-1);
+        history.go(-1)
     }
     return (
         <>

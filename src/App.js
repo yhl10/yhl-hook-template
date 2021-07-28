@@ -1,29 +1,27 @@
-import {Suspense} from 'react';
-import IndexRouter from '@routers/IndexRouter';
-import {useRecoilValue} from 'recoil';
-import {testTextSelector, testPromise} from '@/recoilStore/testStore/testStore';
+import { useEffect, Suspense } from 'react'
+import IndexRouter from '@routers/IndexRouter'
+import { useRecoilValue } from 'recoil'
+import {
+    testTextSelector,
+    testPromise,
+} from '@/recoilStore/testStore/testStore'
 
 function SuspenseWrap(Component) {
     return function NoNameComponent(props) {
         return (
-            <Suspense
-                fallback={<div>loading...</div>}
-            >
-                <Component
-                    {...props}
-                />
+            <Suspense fallback={<div>loading...</div>}>
+                <Component {...props} />
             </Suspense>
         )
     }
 }
 
-function App() {
-
-    const text = useRecoilValue(testTextSelector);
+function App(props) {
+    const text = useRecoilValue(testTextSelector)
 
     // 异步selector 使用useRecoilValueLoadable消费
     // 或者组件外层套一层Suspense
-    const promiseValue = useRecoilValue(testPromise);
+    const promiseValue = useRecoilValue(testPromise)
 
     // const promiseValue = useRecoilValueLoadable(testPromise);
     // const getPromise = recoilValueLoadable => {
@@ -34,6 +32,10 @@ function App() {
     //         return contents;
     //     }
     // }
+
+    useEffect(() => {
+        console.log(props)
+    }, [props])
 
     return (
         <div className="app-wrap">
@@ -48,10 +50,10 @@ function App() {
                     <li>
                         <a href="#/zxc">not found</a>
                     </li>
-                    <li style={{color: 'green'}}>
+                    <li style={{ color: 'green' }}>
                         recoil default value is: {text}
                     </li>
-                    <li style={{color: 'red'}}>
+                    <li style={{ color: 'red' }}>
                         recoil default promiseValue is: {promiseValue}
                         {/* {getPromise(promiseValue)} */}
                     </li>
@@ -61,7 +63,7 @@ function App() {
                 <IndexRouter />
             </section>
         </div>
-    );
+    )
 }
 
-export default SuspenseWrap(App);
+export default SuspenseWrap(App)

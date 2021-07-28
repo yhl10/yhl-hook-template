@@ -1,5 +1,5 @@
-import {atom, selector} from 'recoil';
-import {post} from '@utils/request';
+import { atom, selector } from 'recoil'
+import { post } from '@utils/request'
 
 const testTextAtom = atom({
     key: 'testTextAtom',
@@ -8,23 +8,23 @@ const testTextAtom = atom({
 
 export const testTextSelector = selector({
     key: 'testTextSelector',
-    get: ({get}) => {
-        const value = get(testTextAtom);
-        return value;
+    get: ({ get }) => {
+        const value = get(testTextAtom)
+        return value
     },
-    set: ({set}, newValue) => {
-        set(testTextAtom, newValue);
-    }
+    set: ({ set }, newValue) => {
+        set(testTextAtom, newValue)
+    },
 })
 
 export const testPromise = selector({
     key: 'testPromise',
     get: async () => {
-        const value = await post('/api/recoil');
-        const {code, data} = value;
-        if(code === 200) {
-            return data;
+        const value = await post('/api/recoil')
+        const { code, data } = value
+        if (code === 200) {
+            return data
         }
-        return 'some error happen';
+        return 'some error happen'
     },
 })

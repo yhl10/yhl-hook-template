@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios'
 
 const axiosInstance = axios.create({
     timeout: 15000,
@@ -7,12 +7,12 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
     req => {
         // console.log(req)
-        req.headers.token = 'aaabbbccc';
-        return req;
+        req.headers.token = 'aaabbbccc'
+        return req
     },
     err => {
-        console.log(err);
-    }
+        console.log(err)
+    },
 )
 
 axiosInstance.interceptors.response.use(
@@ -21,19 +21,19 @@ axiosInstance.interceptors.response.use(
             code: res.status,
             data: res.data,
         }
-        return data;
+        return data
     },
     err => {
-        console.log(err);
-    }
+        console.log(err)
+    },
 )
 
 export const get = async url => {
-    const res = await axiosInstance.get(url);
-    return res;
+    const res = await axiosInstance.get(url)
+    return res
 }
 
 export const post = async (url, param) => {
-    const res = await axiosInstance.post(url, param);
-    return res;
+    const res = await axiosInstance.post(url, param)
+    return res
 }
