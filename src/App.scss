@@ -1,0 +1,23 @@
+.app-wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    & > nav {
+        width: 200px;
+        height: 100%;
+        padding: 15px;
+        ul {
+            width: 100%;
+            height: 100%;
+            li {
+                padding-bottom: 8px;
+            }
+        }
+    }
+    & > section {
+        width: calc(100% - 200px);
+        height: 100%;
+        padding: 15px;
+        border: 1px dashed #191191;
+    }
+}

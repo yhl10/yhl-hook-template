@@ -7,9 +7,9 @@ import reportWebVitals from './reportWebVitals'
 import App from './App'
 import 'moment/locale/zh-cn'
 import 'antd/dist/antd.css'
+import 'react-grid-layout/css/styles.css'
+import 'react-resizable/css/styles.css'
 import 'reset-css'
-import './index.scss'
-
 ReactDOM.render(
     <ConfigProvider locale={zhCN}>
         <React.StrictMode>

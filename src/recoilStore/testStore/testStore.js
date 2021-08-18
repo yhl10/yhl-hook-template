@@ -6,6 +6,11 @@ const testTextAtom = atom({
     default: 'defaultTestText',
 })
 
+const listAtom = atom({
+    key: 'listAtom',
+    default: [],
+})
+
 export const testTextSelector = selector({
     key: 'testTextSelector',
     get: ({ get }) => {
@@ -26,5 +31,16 @@ export const testPromise = selector({
             return data
         }
         return 'some error happen'
+    },
+})
+
+export const listSelector = selector({
+    key: 'listSelector',
+    get: ({ get }) => {
+        const value = get(listAtom)
+        return value
+    },
+    set: ({ set }, newValue) => {
+        set(listAtom, newValue)
     },
 })

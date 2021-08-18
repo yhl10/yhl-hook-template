@@ -1,10 +1,6 @@
 import { useEffect, Suspense } from 'react'
 import IndexRouter from '@routers/IndexRouter'
-import { useRecoilValue } from 'recoil'
-import {
-    testTextSelector,
-    testPromise,
-} from '@/recoilStore/testStore/testStore'
+import './App.scss'
 
 function SuspenseWrap(Component) {
     return function NoNameComponent(props) {
@@ -17,11 +13,8 @@ function SuspenseWrap(Component) {
 }
 
 function App(props) {
-    const text = useRecoilValue(testTextSelector)
-
     // 异步selector 使用useRecoilValueLoadable消费
     // 或者组件外层套一层Suspense
-    const promiseValue = useRecoilValue(testPromise)
 
     // const promiseValue = useRecoilValueLoadable(testPromise);
     // const getPromise = recoilValueLoadable => {
@@ -48,14 +41,13 @@ function App(props) {
                         <a href="#/bbb">bbb</a>
                     </li>
                     <li>
+                        <a href="#/ccc">ccc</a>
+                    </li>
+                    <li>
+                        <a href="#/ddd">ddd</a>
+                    </li>
+                    <li>
                         <a href="#/zxc">not found</a>
-                    </li>
-                    <li style={{ color: 'green' }}>
-                        recoil default value is: {text}
-                    </li>
-                    <li style={{ color: 'red' }}>
-                        recoil default promiseValue is: {promiseValue}
-                        {/* {getPromise(promiseValue)} */}
                     </li>
                 </ul>
             </nav>
